@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rinae Innocent Ramadi — Portfolio</title>
+  <meta name="description" content="Portfolio of Rinae Innocent Ramadi — ICT (Applications Development). Projects, skills, certifications, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+   <!-- Loading Screen -->
+   <div id="loading" class="loading">
+     <div class="loading-content">
+       <div class="loading-spinner"></div>
+       <h2>Loading...</h2>
+     </div>
+   </div>
+
+   <!-- Scroll Progress Bar -->
+   <div id="scrollProgress"></div>
+
+   <!-- Animated background layer -->
+   <div class="particles" aria-hidden="true"></div>
+
+      
+  <!-- Top Navbar -->
+  <header class="topbar">
+    <button aria-label="Open menu" class="icon-btn" id="openSidebarBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="brand">
+      <span class="logo">IR</span>
+      <div class="brand-text">
+        <strong>Rinae Innocent Ramadi</strong>
+        <small>ICT: Software Development</small>
+      </div>
+    </div>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Side Navigation -->
+  <aside class="sidebar" id="sidebar" aria-label="Section navigation">
+    <div class="sidebar-header">
+      <button class="icon-btn" id="closeSidebarBtn" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="profile">
+        <img src="assets/profile.jpg" alt="Profile photo of Rinae Innocent Ramadi" onerror="this.src='assets/profile-placeholder.svg'">
+        <div>
+          <h2>Rinae I. Ramadi</h2>
+          <p>Software Developer</p>
+        </div>
+      </div>
+    </div>
+    <ul class="menu">
+      <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+      <li><a href="#certifications"><i class="fa-solid fa-certificate"></i> Certifications</a></li>
+      <li><a href="#skills"><i class="fa-solid fa-screwdriver-wrench"></i> Skills</a></li>
+      <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+      <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <a class="btn outline" href="#contact"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+      <a class="btn" href="assets/Rinae_Ramadi_CV.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+    </div>
+  </aside>
+
+  <!-- Content Wrapper -->
+  <main id="content">
+    <!-- HERO / HOME -->
+    <section id="home" class="section hero">
+      <div class="hero-text">
+        <h1 class="reveal">
+          <span class="muted">Hi, I'm</span> <span id="typed" aria-label="Rinae Ramadi">Rinae Ramadi</span><span class="cursor" aria-hidden="true">|</span>
+        </h1>
+        <p class="lead reveal delay-1">
+          Solutions-driven ICT specialist focused on <strong>full-stack</strong>, <strong>cloud</strong>, <strong>low-code (Mendix)</strong>, and <strong>cybersecurity</strong> solutions. I love building scalable software that delivers measurable impact.
+        </p>
+        <div class="cta reveal delay-2">
+          <a class="btn ripple" href="#projects"><i class="fa-solid fa-rocket"></i> View Projects</a>
+          <a class="btn outline ripple" href="#contact"><i class="fa-solid fa-comments"></i> Let's Talk</a>
+        </div>
+        <ul class="quick-stats reveal delay-3">
+          <li><i class="fa-solid fa-circle-check"></i> <span class="counter" data-target="5">0</span>+ Mendix apps delivered</li>
+          <li><i class="fa-solid fa-gauge-high"></i> <span class="counter" data-target="20">0</span>% efficiency gains</li>
+          <li><i class="fa-solid fa-users"></i> <span class="counter" data-target="200">0</span>+ users supported</li>
+        </ul>
+      </div>
+      <div class="hero-media">
+        <div class="glass hero-image">
+          <img class="hero-img" src="assets/hero-1.jpg" alt="Rinae working on code" onerror="this.src='assets/profile-placeholder.svg'">
+        </div>
+        <div class="floating-cards">
+          <div class="float-card"><i class="devicon-java-plain"></i><span>Java</span></div>
+          <div class="float-card"><i class="devicon-html-plain"></i><span>HTML</span></div>
+          <div class="float-card"><i class="devicon-css-plain"></i><span>CSS</span></div>
+          <div class="float-card"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+          <div class="float-card"><i class="devicon-python-plain"></i><span>Python</span></div>
+          <div class="float-card"><i class="devicon-kotlin-plain"></i><span>Kotlin</span></div>
+          <div class="float-card"><i class="devicon-mendix-plain"></i><span>Mendix</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-user-gear"></i> About</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Recent Diploma in ICT (Applications Development) graduate, currently pursuing an Advanced Diploma at the University of Mpumalanga.
+            Passionate about building user-centric software with modern stacks across web, mobile, and cloud.
+          </p>
+          <ul class="ticks">
+            <li>Full-stack: Java, Kotlin, Python, JavaScript</li>
+            <li>Databases: MySQL, Firebase, MongoDB</li>
+            <li>Low-code: Mendix — delivered automation with measurable impact</li>
+          </ul>
+          <div class="badges">
+            <span class="badge">Problem-solver</span>
+            <span class="badge">Continuous Learner</span>
+            <span class="badge">Team Player</span>
+          </div>
+        </div>
+        <div class="about-photo reveal delay-1">
+          <img src="assets/coding.jpg" alt="Portrait of Rinae" onerror="this.src='assets/profile-placeholder.svg'">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+<section id="projects" class="section reveal">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>Responsive Weather App</h3>
+        <p>A responsive app that fetches live weather data from an API.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/Responsive-weather-app" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://rinaerams.github.io/Responsive-weather-app/" target="_blank" class="btn demo">
+          🚀 Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+       <div class="card-content">
+         <h3>Calculator App</h3>
+         <p>A clean and functional calculator built with HTML, CSS, and JavaScript.</p>
+       </div>
+       <div class="card-links">
+         <a href="https://github.com/RinaeRams/Calculator-app" target="_blank" class="btn github">
+           <i class="fab fa-github"></i> Code
+         </a>
+         <a href="https://calculator-app-o5na.onrender.com/" target="_blank" class="btn demo">
+           🚀 Live Demo
+         </a>
+       </div>
+     </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>Greeting App</h3>
+        <p>A fun app that generates personalized greetings based on user input.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/GreetingApp" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://rinaerams.github.io/GreetingApp/" target="_blank" class="btn demo">
+          🚀 Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>Book Tracker GUI</h3>
+        <p>A Python GUI app for tracking books read, with add/remove and search features.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/Book-Tracker-GUI-app" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <!-- No demo yet -->
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>To-Do List Website</h3>
+        <p>A simple to-do list web app with add, delete, and completion tracking.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/To-Do-List-website" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://rinaerams.github.io/To-Do-List-website/" target="_blank" class="btn demo">
+          🚀 Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>Sales Dashboard</h3>
+        <p>A dashboard to visualize sales data with charts and interactive filters.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/Sales_Dashboard" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://sales-dashboard-1-4ho6.onrender.com" target="_blank" class="btn demo">
+          🚀 Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>Portfolio Website</h3>
+        <p>This portfolio site showcasing my projects, skills, and certifications.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/Rinae-Ramadi-Portfolio" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="https://rinaerams.github.io/Rinae-Ramadi-Portfolio/" target="_blank" class="btn demo">
+          🚀 Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>RinaeRams Repo</h3>
+        <p>Main GitHub repo containing experiments and general projects.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/RinaeRams" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <!-- No demo -->
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-content">
+        <h3>Brewtopia</h3>
+        <p>A beverage ordering and tracking app with a user-friendly interface.</p>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/RinaeRams/Brewtopia" target="_blank" class="btn github">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <!-- No demo yet -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+   <!-- CERTIFICATIONS -->
+<section id="certifications" class="section">
+ <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications</h2>
+ <ul class="cert-list reveal">
+   <li class="cert-item">
+     <i class="fa-solid fa-shield-halved"></i>
+     <div class="cert-text">
+       <span class="cert-title">Mendix Rapid Developer Certification</span>
+       <span class="cert-issuer">Mendix</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-brands fa-java"></i>
+     <div class="cert-text">
+       <span class="cert-title">Oracle Certified Associate: Java SE 8 Programmer</span>
+       <span class="cert-issuer">Oracle</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-brands fa-react"></i>
+     <div class="cert-text">
+       <span class="cert-title">Meta React Native Specialization</span>
+       <span class="cert-issuer">Coursera</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-solid fa-laptop-code"></i>
+     <div class="cert-text">
+       <span class="cert-title">Responsive Web Design</span>
+       <span class="cert-issuer">freeCodeCamp</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-solid fa-code"></i>
+     <div class="cert-text">
+       <span class="cert-title">Certificate in Full Stack Development</span>
+       <span class="cert-issuer">FNB App Academy</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-solid fa-shield-halved"></i>
+     <div class="cert-text">
+       <span class="cert-title">Cybersecurity Fundamentals</span>
+       <span class="cert-issuer">IBM</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-solid fa-database"></i>
+     <div class="cert-text">
+       <span class="cert-title">Data Science Foundations – Level 1</span>
+       <span class="cert-issuer">IBM</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-brands fa-google"></i>
+     <div class="cert-text">
+       <span class="cert-title">Foundations: Data, Data, Everywhere</span>
+       <span class="cert-issuer">Google (Coursera)</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-brands fa-google"></i>
+     <div class="cert-text">
+       <span class="cert-title">Tools of the Trade: Linux and SQL</span>
+       <span class="cert-issuer">Google (Coursera)</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-brands fa-google"></i>
+     <div class="cert-text">
+       <span class="cert-title">Play It Safe: Manage Security Risks</span>
+       <span class="cert-issuer">Google</span>
+     </div>
+   </li>
+   <li class="cert-item">
+     <i class="fa-solid fa-trophy"></i>
+     <div class="cert-text">
+       <span class="cert-title">Certificate of Participation</span>
+       <span class="cert-issuer">MAISHHackathon2025</span>
+     </div>
+   </li>
+ </ul>
+</section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i> Skills</h2>
+      <div class="skills-grid reveal">
+        <div>
+          <h3>Programming</h3>
+          <ul class="chips">
+            <li><i class="devicon-java-plain"></i> Java</li>
+            <li><i class="devicon-kotlin-plain"></i> Kotlin</li>
+            <li><i class="devicon-python-plain"></i> Python</li>
+            <li><i class="devicon-cplusplus-plain"></i> C++</li>
+            <li><i class="devicon-javascript-plain"></i> JavaScript</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Web & Mobile</h3>
+          <ul class="chips">
+            <li><i class="devicon-css-plain"></i> CSS</li>
+            <li><i class="devicon-html-plain"></i> HTML</li>
+            <li><i class="devicon-react-original"></i> React</li>
+            <li><i class="devicon-angular-plain"></i> Angular</li>
+            <li><i class="devicon-nodejs-plain"></i> Node.js</li>
+            <li><i class="devicon-express-original"></i> Express</li>
+            <li><i class="devicon-android-plain"></i> Android (Kotlin)</li>
+            <li><i class="devicon-flutter-plain"></i> Flutter</li>
+            <li><i class="devicon-react-original"></i> React Native</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Data & Cloud</h3>
+          <ul class="chips">
+            <li><i class="devicon-mysql-plain"></i> MySQL</li>
+            <li><i class="devicon-firebase-plain"></i> Firebase</li>
+            <li><i class="devicon-mongodb-plain"></i> MongoDB</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Low-code</h3>
+          <ul class="chips">
+            <li><i class="devicon-mendix-plain"></i> Mendix</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Soft Skills</h3>
+          <ul class="chips">
+            <li>Leadership</li><li>Teamwork</li><li>Problem Solving</li><li>Communication</li><li>Time Management</li><li>Creativity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience</h2>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="time">Mar 2024 – Dec 2024</div>
+          <div class="content">
+            <h3>Mendix Application Developer — Freelance</h3>
+            <ul>
+              <li>Built 5+ low-code apps; automated processes for 15–20% efficiency gains.</li>
+              <li>Integrated MySQL/Firebase with REST APIs for real-time sync.</li>
+              <li>Delivered 3 major projects ~2 weeks ahead of schedule.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+      <div class="edu-cards reveal">
+        <div class="edu-card">
+          <h3>Advanced Diploma in ICT (Applications Development)</h3>
+          <p>University of Mpumalanga — <em>Expected Dec 2025</em></p>
+        </div>
+        <div class="edu-card">
+          <h3>Diploma in ICT (Applications Development)</h3>
+          <p>University of Mpumalanga — <em>Completed Dec 2024</em></p>
+        </div>
+        <div class="edu-card">
+          <h3>National Senior Certificate</h3>
+          <p>Nngweni Secondary School — <em>Completed 2021</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Contact</h2>
+      <div class="contact-grid reveal">
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="How can we collaborate?" required></textarea>
+          </div>
+          <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Send</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="contact-card">
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+27661481164">+27 66 148 1164</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:innocentrinae4@gmail.com">innocentrinae4@gmail.com</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:222001313@ump.ac.za">222001313@ump.ac.za</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> Louis Trichardt, Limpopo, South Africa</li>
+          </ul>
+          <div class="socials">
+            <a aria-label="GitHub" href="https://github.com/RinaeRams" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a aria-label="LinkedIn" href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a aria-label="Twitter" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> Rinae Innocent Ramadi. Built with ❤️ in South Africa.</p>
+    </footer>
+  </main>
+
+  <div class="overlay" id="overlay" tabindex="-1" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
