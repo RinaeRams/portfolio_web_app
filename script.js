@@ -138,7 +138,7 @@ document.addEventListener('mousemove', (e) => {
 
 // ===== Typed Text Effect (hero) =====
 const typedEl = document.getElementById('typed');
-const words = ["Rinae Ramadi", "a Developer", "a Cybersecurity Analyst", "a Cloud Enthusiast", "a Problem Solver"];
+const words = ["Rinae Ramadi", "a Software Developer", "a Full-Stack Developer", "a Mobile Developer", "an Innovator"];
 let wordIndex = 0, charIndex = 0, typing = true;
 
 function typeEffect() {
