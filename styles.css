@@ -97,7 +97,9 @@ header, aside, main, footer { position: relative; z-index: 1; }
   display:grid; place-items:center; width:34px; height:34px;
   border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2));
   color:#0b0f17; font-weight:800;
+  transition: all 0.3s ease;
 }
+.brand .logo:hover{ transform: rotate(360deg) scale(1.1); box-shadow: 0 0 20px rgba(0,212,255,0.5) }
 .brand .brand-text small{ color:var(--muted); display:block; margin-top:2px; font-size:.85rem; }
 .topnav{ margin-left:auto; display:none; gap:8px; flex-wrap:wrap }
 .topnav a{
@@ -240,7 +242,9 @@ header, aside, main, footer { position: relative; z-index: 1; }
 .hero-img{
   width:100%; height:100%; aspect-ratio: 4 / 5; object-fit: cover;
   border-radius: calc(var(--radius) - 6px);
+  transition: transform 0.3s ease;
 }
+.hero-img:hover{ transform: scale(1.05) rotate(2deg) }
 .floating-cards{
   position:absolute; right: 0; bottom: 0; display:grid; gap:10px;
   width:min(300px,45vw); transform: translate(10%, 10%);
@@ -392,9 +396,14 @@ header, aside, main, footer { position: relative; z-index: 1; }
 input, textarea{
   width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.16);
   background:#0e1423; color:var(--text);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+input:focus, textarea:focus{ border-color: var(--accent); box-shadow: 0 0 10px rgba(0,212,255,0.3) }
+input:hover, textarea:hover{ border-color: rgba(0,212,255,0.5) }
 .form-status{ color:var(--muted); margin-top:8px; min-height:1.25em }
 .contact-list{ list-style:none; padding:0; display:grid; gap:10px; color:var(--muted) }
+.contact-list a{ transition: color 0.3s ease, text-shadow 0.3s ease }
+.contact-list a:hover{ color: var(--accent); text-shadow: 0 0 10px rgba(0,212,255,0.5) }
 .socials{ display:flex; gap:12px; margin-top:12px }
 .socials a{ display:grid; place-items:center; width:40px; height:40px; border-radius:12px; background:var(--glass); border:1px solid rgba(255,255,255,.12); color:var(--text); transition: all 0.3s ease }
 .socials a:hover{ transform: scale(1.1) rotate(5deg); background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: var(--accent); box-shadow: 0 0 20px rgba(0,212,255,0.5) }
