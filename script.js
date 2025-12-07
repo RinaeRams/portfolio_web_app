@@ -88,7 +88,7 @@ form?.addEventListener('submit', (e)=>{
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loading').classList.add('hide');
-  }, 1000);
+  }, 4000);
 });
 
 // ===== Footer year =====
