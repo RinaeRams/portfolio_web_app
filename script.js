@@ -65,11 +65,23 @@ form?.addEventListener('submit', (e)=>{
     statusEl.textContent = 'Please enter a valid email.';
     return;
   }
-  statusEl.textContent = 'Thanks! Your message has been prepared in your email client.';
-  const subject = encodeURIComponent('Portfolio Contact — ' + name);
-  const body = encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
-  window.location.href = 'mailto:innocentrinae4@gmail.com?subject=' + subject + '&body=' + body;
-  form.reset();
+  statusEl.textContent = 'Sending...';
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      statusEl.textContent = 'Thanks! Message sent successfully.';
+      form.reset();
+    } else {
+      statusEl.textContent = 'Oops! There was a problem sending your message.';
+    }
+  }).catch(error => {
+    statusEl.textContent = 'Oops! There was a problem sending your message.';
+  });
 });
 
 // ===== Loading Screen =====
