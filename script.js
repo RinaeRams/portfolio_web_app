@@ -7,11 +7,15 @@ const closeBtn = document.getElementById('closeSidebarBtn');
 function openSidebar(){
   sidebar.classList.add('open');
   overlay.classList.add('show');
+  sidebar.setAttribute('aria-hidden', 'false');
+  openBtn.setAttribute('aria-expanded', 'true');
   sidebar.querySelector('a,button')?.focus();
 }
 function closeSidebar(){
   sidebar.classList.remove('open');
   overlay.classList.remove('show');
+  sidebar.setAttribute('aria-hidden', 'true');
+  openBtn.setAttribute('aria-expanded', 'false');
 }
 openBtn?.addEventListener('click', openSidebar);
 closeBtn?.addEventListener('click', closeSidebar);
@@ -93,6 +97,15 @@ window.addEventListener('load', () => {
 
 // ===== Footer year =====
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== Live Clock =====
+function updateClock() {
+  const now = new Date();
+  const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+  document.getElementById('liveClock').textContent = `Current Time: ${timeString}`;
+}
+updateClock();
+setInterval(updateClock, 1000);
 
 // ===== Scroll Progress Bar =====
 window.addEventListener('scroll', () => {
@@ -177,4 +190,57 @@ function typeEffect() {
   }
 }
 typeEffect();
+
+// ===== Theme Toggle =====
+const themeToggle = document.getElementById('themeToggle');
+const currentTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', currentTheme);
+themeToggle.innerHTML = currentTheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+});
+
+// ===== Parallax Effect =====
+const heroMedia = document.querySelector('.hero-media');
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  if (scrolled < window.innerHeight) {
+    heroMedia.style.transform = `translateY(${scrolled * 0.3}px)`;
+  }
+});
+
+// ===== Touch Interactions =====
+let startX, startY;
+document.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+});
+document.addEventListener('touchend', (e) => {
+  if (!startX || !startY) return;
+  const endX = e.changedTouches[0].clientX;
+  const endY = e.changedTouches[0].clientY;
+  const diffX = endX - startX;
+  const diffY = endY - startY;
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+    if (diffX > 0 && startX < 50 && !sidebar.classList.contains('open')) {
+      openSidebar();
+    } else if (diffX < 0 && sidebar.classList.contains('open')) {
+      closeSidebar();
+    }
+  }
+  startX = null;
+  startY = null;
+});
+
+// ===== Button Press Effect =====
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousedown', () => btn.classList.add('pressed'));
+  btn.addEventListener('mouseup', () => btn.classList.remove('pressed'));
+  btn.addEventListener('mouseleave', () => btn.classList.remove('pressed'));
+});
 

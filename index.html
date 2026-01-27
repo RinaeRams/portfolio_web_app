@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rinae Innocent Ramadi — Portfolio</title>
   <meta name="description" content="Portfolio of Rinae Innocent Ramadi — ICT (Applications Development). Projects, skills, certifications, and contact." />
+  <meta name="keywords" content="portfolio, software developer, full-stack developer, mobile developer, ICT, applications development, Java, Kotlin, Python, React, Mendix" />
+  <meta name="author" content="Rinae Innocent Ramadi" />
+  <meta property="og:title" content="Rinae Innocent Ramadi — Portfolio" />
+  <meta property="og:description" content="Portfolio of Rinae Innocent Ramadi — ICT (Applications Development). Projects, skills, certifications, and contact." />
+  <meta property="og:image" content="assets/hero-1.jpg" />
+  <meta property="og:url" content="https://rinaerams.github.io/portfolio_web_app" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://rinaerams.github.io/portfolio_web_app" />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -37,6 +45,7 @@
 
    <!-- Animated background layer -->
    <div class="particles" aria-hidden="true"></div>
+   <div class="extra-particles" aria-hidden="true"></div>
 
       
   <!-- Top Navbar -->
@@ -50,6 +59,11 @@
         <strong>Rinae Innocent Ramadi</strong>
         <small>ICT: Software Development</small>
       </div>
+    </div>
+    <div class="top-controls">
+      <button aria-label="Toggle theme" class="icon-btn" id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+      </button>
     </div>
     <nav class="topnav" aria-label="Primary">
       <a href="#home">Home</a>
@@ -311,10 +325,17 @@
       <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
       <div class="edu-cards reveal">
         <div class="edu-card">
+          <i class="fa-solid fa-user-graduate edu-icon"></i>
+          <h3>Postgraduate Diploma in Information Communication Technology In Applications Development</h3>
+          <p>University of Mpumalanga — Expected <em>2026</em></p>
+        </div>
+        <div class="edu-card">
+          <i class="fa-solid fa-certificate edu-icon"></i>
           <h3>Advanced Diploma in ICT (Applications Development)</h3>
           <p>University of Mpumalanga — <em>2025</em></p>
         </div>
         <div class="edu-card">
+          <i class="fa-solid fa-graduation-cap edu-icon"></i>
           <h3>Diploma in ICT (Applications Development)</h3>
           <p>University of Mpumalanga — <em>2024</em></p>
         </div>
@@ -358,6 +379,7 @@
 
     <footer class="footer">
       <p>&copy; <span id="year"></span> Rinae Innocent Ramadi. Built with ❤️ in South Africa.</p>
+      <div id="liveClock" class="live-clock"></div>
     </footer>
   </main>
 
