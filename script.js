@@ -24,19 +24,26 @@ overlay?.addEventListener('click', closeSidebar);
 // Close on Escape
 document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeSidebar() });
 
-// ===== Intersection Observer (reveal + cards) =====
-const revealEls = document.querySelectorAll('.reveal, .card');
+// ===== Enhanced Intersection Observer (reveal + stagger) =====
+const revealEls = document.querySelectorAll('.reveal, .card, .project-card, .cert-item, .edu-card, .exp-item');
 const io = new IntersectionObserver((entries)=>{
   entries.forEach((entry, index) => {
     if(entry.isIntersecting){
       setTimeout(() => {
         entry.target.classList.add('show');
-        io.unobserve(entry.target);
-      }, index * 150); // Stagger delay
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0) scale(1) rotateX(0)';
+      }, index * 100);
+      io.unobserve(entry.target);
     }
   });
-},{ threshold: 0.12 });
-revealEls.forEach(el => io.observe(el));
+},{ threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(50px) scale(0.95)';
+  el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  io.observe(el);
+});
 
 // ===== Smooth scroll & close sidebar on nav click =====
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -92,7 +99,7 @@ form?.addEventListener('submit', (e)=>{
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loading').classList.add('hide');
-  }, 4000);
+  }, 3000);
 });
 
 // ===== Footer year =====
@@ -107,12 +114,12 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// ===== Scroll Progress Bar =====
+// ===== Enhanced Scroll Progress Bar =====
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset;
   const docHeight = document.body.offsetHeight - window.innerHeight;
   const scrollPercent = (scrollTop / docHeight) * 100;
-  document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+  document.getElementById('scrollProgress').style.width = Math.min(scrollPercent, 100) + '%';
 });
 
 // ===== Ripple Effect =====
@@ -133,13 +140,14 @@ const counterObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       const counter = entry.target;
       const target = +counter.getAttribute('data-target');
-      const increment = target / 100;
+      const duration = 2000;
+      const increment = target / (duration / 16);
       let count = 0;
       const updateCounter = () => {
         count += increment;
         if (count < target) {
           counter.innerText = Math.ceil(count);
-          setTimeout(updateCounter, 20);
+          requestAnimationFrame(updateCounter);
         } else {
           counter.innerText = target;
         }
@@ -151,14 +159,23 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 counters.forEach(counter => counterObserver.observe(counter));
 
-// ===== Mouse Parallax Effect =====
+// ===== Enhanced Mouse Parallax Effect =====
+const particles = document.querySelector('.particles');
+const extraParticles = document.querySelector('.extra-particles');
 document.addEventListener('mousemove', (e) => {
   const mouseX = e.clientX / window.innerWidth;
   const mouseY = e.clientY / window.innerHeight;
-  const particles = document.querySelector('.particles');
-  const moveX = (mouseX - 0.5) * 30;
-  const moveY = (mouseY - 0.5) * 30;
-  particles.style.transform = `translate(${moveX}px, ${moveY}px) scale(${1 + mouseX * 0.1})`;
+  
+  // Particles move opposite to mouse
+  const moveX = (mouseX - 0.5) * 20;
+  const moveY = (mouseY - 0.5) * 20;
+  
+  if (particles) {
+    particles.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  }
+  if (extraParticles) {
+    extraParticles.style.transform = `translate(${moveX * -0.5}px, ${moveY * -0.5}px)`;
+  }
 });
 
 // ===== Typed Text Effect (hero) =====
@@ -172,20 +189,20 @@ function typeEffect() {
     if (charIndex < current.length) {
       typedEl.textContent = current.slice(0, charIndex + 1);
       charIndex++;
-      setTimeout(typeEffect, 90);
+      setTimeout(typeEffect, 80);
     } else {
       typing = false;
-      setTimeout(typeEffect, 1500);
+      setTimeout(typeEffect, 2000);
     }
   } else {
     if (charIndex > 0) {
       typedEl.textContent = current.slice(0, charIndex - 1);
       charIndex--;
-      setTimeout(typeEffect, 60);
+      setTimeout(typeEffect, 50);
     } else {
       typing = true;
       wordIndex = (wordIndex + 1) % words.length;
-      setTimeout(typeEffect, 250);
+      setTimeout(typeEffect, 300);
     }
   }
 }
@@ -205,13 +222,100 @@ themeToggle.addEventListener('click', () => {
   themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
 });
 
-// ===== Parallax Effect =====
+// ===== Enhanced Parallax Effects =====
 const heroMedia = document.querySelector('.hero-media');
+const heroText = document.querySelector('.hero-text');
+const floatingCards = document.querySelector('.floating-cards');
+
 window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
-  if (scrolled < window.innerHeight) {
-    heroMedia.style.transform = `translateY(${scrolled * 0.3}px)`;
+  const heroSection = document.getElementById('home');
+  const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+  
+  // Hero parallax
+  if (scrolled < heroSection.offsetHeight) {
+    const parallaxFactor = scrolled * 0.4;
+    if (heroMedia) {
+      heroMedia.style.transform = `translateY(${parallaxFactor}px)`;
+      heroMedia.style.opacity = 1 - (scrolled / heroSection.offsetHeight);
+    }
+    if (heroText) {
+      heroText.style.transform = `translateY(${scrolled * 0.2}px)`;
+    }
+    if (floatingCards) {
+      floatingCards.style.transform = `translateY(${scrolled * 0.15}px) translateX(${(window.innerWidth - scrolled) * 0.02}px)`;
+      floatingCards.style.opacity = 1 - (scrolled / heroSection.offsetHeight) * 1.5;
+    }
   }
+});
+
+// ===== Section-specific parallax =====
+const sections = document.querySelectorAll('.section');
+sections.forEach((section, index) => {
+  const parallaxElements = section.querySelectorAll('[class*="parallax"]');
+  if (parallaxElements.length > 0) {
+    window.addEventListener('scroll', () => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const scrolled = window.pageYOffset;
+      
+      if (scrolled + window.innerHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+        const speed = 0.1 + (index * 0.02);
+        parallaxElements.forEach((el, i) => {
+          const yPos = (scrolled - sectionTop) * speed * (i + 1) * 0.1;
+          el.style.transform = `translateY(${yPos}px)`;
+        });
+      }
+    });
+  }
+});
+
+// ===== Scroll-based element reveal with rotation =====
+const rotateReveal = document.querySelectorAll('.rotate-reveal');
+const rotateObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      entry.target.style.transform = 'rotate(0deg) scale(1)';
+    }
+  });
+}, { threshold: 0.2 });
+rotateReveal.forEach(el => {
+  el.style.transform = 'rotate(10deg) scale(0.9)';
+  el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  rotateObserver.observe(el);
+});
+
+// ===== Scale on scroll =====
+const scaleOnScroll = document.querySelectorAll('.scale-on-scroll');
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  scaleOnScroll.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (inView) {
+      const scale = 1 + ((window.innerHeight - rect.top) / window.innerHeight) * 0.1;
+      el.style.transform = `scale(${Math.min(scale, 1.1)})`;
+    }
+  });
+});
+
+// ===== Magnetic effect on cards =====
+document.querySelectorAll('.project-card, .edu-card, .cert-item, .exp-item').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+  });
 });
 
 // ===== Touch Interactions =====
@@ -244,3 +348,72 @@ document.querySelectorAll('.btn').forEach(btn => {
   btn.addEventListener('mouseleave', () => btn.classList.remove('pressed'));
 });
 
+// ===== Active nav link highlighting =====
+const navLinks = document.querySelectorAll('.topnav a, .menu a');
+const sectionsMap = {};
+sections.forEach(section => {
+  sectionsMap[section.id] = section.offsetTop;
+});
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  let currentSection = '';
+  
+  Object.keys(sectionsMap).forEach(id => {
+    if (sectionsMap[id] <= scrolled + 100) {
+      currentSection = id;
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${currentSection}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// ===== Scroll to top button =====
+const scrollBtn = document.createElement('button');
+scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+scrollBtn.className = 'scroll-to-top';
+scrollBtn.style.cssText = `
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: none;
+  color: #0a0e1a;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 5px 20px rgba(0,212,255,0.4);
+`;
+document.body.appendChild(scrollBtn);
+
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 500) {
+    scrollBtn.style.opacity = '1';
+    scrollBtn.style.visibility = 'visible';
+  } else {
+    scrollBtn.style.opacity = '0';
+    scrollBtn.style.visibility = 'hidden';
+  }
+});
+
+scrollBtn.addEventListener('mouseenter', () => {
+  scrollBtn.style.transform = 'translateY(-5px) scale(1.1)';
+});
+scrollBtn.addEventListener('mouseleave', () => {
+  scrollBtn.style.transform = 'translateY(0) scale(1)';
+});
